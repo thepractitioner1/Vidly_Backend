@@ -4,13 +4,13 @@
 
 # Step 1:
 # Create dockerpath
-dockerpath="thepract/vidly_backend_web"
+dockerpath="thepract/vidly"
 
 # Step 2:  
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
 docker login
-docker tag vidly_backend_web $dockerpath:latest
+docker tag vidly $dockerpath:latest
 
 # Step 3:
 # Push image to a docker repository
