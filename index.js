@@ -14,5 +14,6 @@ const port = process.env.PORT || config.get("port");
 const server = app.listen(port, () =>
   winston.info(`Listening on port ${port}...`)
 );
+winston.info(process.env.NODE_ENV);
 
 module.exports = server;
