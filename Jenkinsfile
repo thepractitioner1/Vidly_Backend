@@ -13,10 +13,8 @@ pipeline {
                 }
             }
          } 
-         
-     }
 
-     stage('Upload Image to Docker hub') {
+         stage('Upload Image to Docker hub') {
             steps{
                 script {
                     docker.withRegistry( '', registryCredential ) {
@@ -25,4 +23,8 @@ pipeline {
                 }
             }
         }
+         
+     }
+
+     
 }
