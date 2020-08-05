@@ -3,7 +3,11 @@
 # Dockerfile should pass hadolint
 # (Optional) Build a simple integration test
 
-
+setup:
+	sudo apt update
+	sudo apt install nodejs
+	sudo apt install npm
+	nodejs -v
 
 install:
 	# This should be run from inside the current directory
