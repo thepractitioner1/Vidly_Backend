@@ -22,4 +22,4 @@ lint:
 	# This is linter for Dockerfiles
 	hadolint Dockerfile
 
-all: install lint test
+all: setup install lint test
