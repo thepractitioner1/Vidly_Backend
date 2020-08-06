@@ -10,10 +10,12 @@ require("./startup/db")();
 require("./startup/config")();
 require("./startup/validation")();
 
+// eslint-disable-next-line no-undef
 const port = process.env.PORT || config.get("port");
 const server = app.listen(port, () =>
   winston.info(`Listening on port ${port}...`)
 );
+// eslint-disable-next-line no-undef
 winston.info(process.env.NODE_ENV);
 
 module.exports = server;
