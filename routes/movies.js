@@ -8,7 +8,11 @@ const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/" ,(req,res)=>{
+  res.send("Continous Integration worked")
+})
+
+router.get("/getmovies", async (req, res) => {
   const movies = await Movie.find()
     .select("-__v")
     .sort("name");
