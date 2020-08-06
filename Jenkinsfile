@@ -6,6 +6,15 @@ pipeline {
         dockerImage = ''
     }
      stages {
+
+          stage('Lint Project') {
+            steps{
+                script {
+                   sh "make lint" 
+                }
+            }
+         } 
+
          stage('Build Docker Image') {
             steps{
                 script {

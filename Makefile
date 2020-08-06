@@ -21,6 +21,7 @@ test:
 lint:
 	# See local hadolint install instructions:   https://github.com/hadolint/hadolint
 	# This is linter for Dockerfiles
+	eslint "middleware/**" "routes/**" "models/**" seed.js index.js
 	hadolint Dockerfile
 
 all: setup install lint test
