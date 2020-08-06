@@ -32,7 +32,7 @@ pipeline {
        
         stage('Update Kube Config'){
             steps {
-                withAWS(region:'us-west-2',credentials:'aws-static') {
+                withAWS(region:'us-west-2',credentials:'aws') {
                     sh 'sudo aws eks --region us-west-2 update-kubeconfig --name vidly'                    
                 }
             }
