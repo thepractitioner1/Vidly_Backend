@@ -20,7 +20,8 @@ router.post("/", async(req, res)=>{
         timeStamp: req.body.timeStamp,
         description: req.body.description,
         customerEmail: req.body.customerEmail,
-        customerPhoneNumber: req.body.customerPhoneNumber
+        customerPhoneNumber: req.body.customerPhoneNumber,
+        errorCategory: req.body.errorCategory
     })
     await response.save();
     res.send(response);
