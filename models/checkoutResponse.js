@@ -54,7 +54,7 @@ function validateResponse(response) {
     currency: Joi.string(),
     timeStamp: Joi.date(),
     description: Joi.string(),
-    customerEmail: Joi.string(),
+    customerEmail: Joi.string().required(),
     customerPhoneNumber: Joi.string(),
   };
 
