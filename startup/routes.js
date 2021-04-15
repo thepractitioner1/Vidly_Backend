@@ -7,6 +7,7 @@ const users = require('../routes/users');
 const auth = require('../routes/auth');
 const returns = require('../routes/returns');
 const error = require('../middleware/error');
+const rentOrder = require('../routes/rentOrder')
 const response = require('../routes/checkoutResponse');
 
 module.exports = function(app) {
@@ -19,5 +20,6 @@ module.exports = function(app) {
   app.use('/api/auth', auth);
   app.use('/api/returns', returns);
   app.use('/api/pagaResponse', response);
+  app.use('/api/rent', rentOrder);
   app.use(error);
 }
