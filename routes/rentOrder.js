@@ -5,21 +5,17 @@ const express = require("express");
 const router = express.Router();
 
 
-let pagaConnectClient = PagaConnect.Builder()
-    .setClientId("C1CA7F81-383E-4FFD-9317-D96D606502A8")
-    .setSecret("tF5=zpPwyqaC5Vs")
-    .setRedirectUri("http://localhost:3000/rent/getMovie/5f255392f443cee42aa33ed2")
-    .setScope("USER_DEPOSIT_FROM_CARD+MERCHANT_PAYMENT+USER_DETAILS_REQUEST+PAGA_ACCOUNT_NUBAN")
-    .setUserData("FIRST_NAME+LAST_NAME+USERNAME+EMAIL+ACCOUNT_BALANCE")
-    .setIsTest(true)
-    .build();
+// let pagaConnectClient = PagaConnect.Builder()
+//     .setClientId("C1CA7F81-383E-4FFD-9317-D96D606502A8")
+//     .setSecret("tF5=zpPwyqaC5Vs")
+//     .setRedirectUri("http://localhost:3000/rent/getMovie/5f255392f443cee42aa33ed2")
+//     .setScope("USER_DEPOSIT_FROM_CARD+MERCHANT_PAYMENT+USER_DETAILS_REQUEST+PAGA_ACCOUNT_NUBAN")
+//     .setUserData("FIRST_NAME+LAST_NAME+USERNAME+EMAIL+ACCOUNT_BALANCE")
+//     .setIsTest(true)
+//     .build();
 
 
-async function getAccessToken(authorizationToken) {
-    const response = await pagaConnectClient.getAccessToken(authorizationToken);
-    // console.log(response);
-    return response.result.access_token;
-}
+
 
 router.get("/getMovie/:id", async (req, res) => {
     const movie = await Movie.findById(req.params.id).select("-__v");
@@ -31,15 +27,22 @@ router.get("/getMovie/:id", async (req, res) => {
 router.post("/pay", async (req, res) => {
     
     const { authorizationToken, movieId } = req.body;
+    console.log(movieId)
     
-    let pagaConnectClient = PagaConnect.Builder()
-    .setClientId("C1CA7F81-383E-4FFD-9317-D96D606502A8")
-    .setSecret("tF5=zpPwyqaC5Vs")
+    const pagaConnectClient = PagaConnect.Builder()
+    .setClientId("A6C42F91-ABCB-412F-B65D-AF0871F86604")
+    .setSecret("dA2=3#esvJvs7b+")
     .setRedirectUri(`http://localhost:3000/rent/getMovie/${movieId}`)
     .setScope("USER_DEPOSIT_FROM_CARD+MERCHANT_PAYMENT+USER_DETAILS_REQUEST+PAGA_ACCOUNT_NUBAN")
     .setUserData("FIRST_NAME+LAST_NAME+USERNAME+EMAIL+ACCOUNT_BALANCE")
     .setIsTest(true)
     .build();
+
+    async function getAccessToken(authorizationToken) {
+        const response = await pagaConnectClient.getAccessToken(authorizationToken);
+        console.log(response);
+        return response.result.access_token;
+    }
 
 
     const string = randomString.generate();
