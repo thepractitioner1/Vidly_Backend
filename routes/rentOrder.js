@@ -30,9 +30,9 @@ router.post("/pay", async (req, res) => {
     console.log(movieId)
     
     const pagaConnectClient = PagaConnect.Builder()
-    .setClientId("A6C42F91-ABCB-412F-B65D-AF0871F86604")
-    .setSecret("dA2=3#esvJvs7b+")
-    .setRedirectUri(`http://localhost:3000/rent/getMovie/${movieId}`)
+    .setClientId("9BF570AA-ECCF-4F11-858F-B4108535445F")
+    .setSecret("dA5+7yNeHWUP@DB")
+    .setRedirectUri(`https://cryptic-fjord-22142.herokuapp.com/rent/getMovie/${movieId}`)
     .setScope("USER_DEPOSIT_FROM_CARD+MERCHANT_PAYMENT+USER_DETAILS_REQUEST+PAGA_ACCOUNT_NUBAN")
     .setUserData("FIRST_NAME+LAST_NAME+USERNAME+EMAIL+ACCOUNT_BALANCE")
     .setIsTest(true)
