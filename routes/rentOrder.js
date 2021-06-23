@@ -18,9 +18,9 @@ router.get("/getMovie/:id", async (req, res) => {
 
 
 router.post("/createPaymentRequest", auth, async (req, res) => {
-    const { name, phoneNumber, email, paymentMethod, movieId } = req.body;
+    const { name, phoneNumber, email, movieId } = req.body;
     const movie = await Movie.findById(movieId);
-    const result = await createPaymentRequest(movie.dailyRentalRate, name, phoneNumber, email, paymentMethod);
+    const result = await createPaymentRequest(movie.dailyRentalRate, name, phoneNumber, email);
     if (result.error) {
         return res.status(400).send("An error occured. Please contact customer service");
     }
